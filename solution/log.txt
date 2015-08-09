@@ -1,101 +1,92 @@
 
----- {(at root (cons2 ti2 (cons2 ti2 (cons2 pa2 pr pu) pt) (cons2 ti2 (cons2 pa2 nr nt) nu))), (stage main)}
+---- {(at root (bi mc2 (bi mc2 (bi md2 (pa r) (pa u)) (pa t)) (bi mc2 (bi md2 (na r) (na t)) (na u)))), (stage main)}
 
-Applying transition (elim_cons root ti2 (cons2 ti2 (cons2 pa2 pr pu) pt) (cons2 ti2 (cons2 pa2 nr nt) nu))
----- {(at (path1 ti2 root) (cons2 ti2 (cons2 pa2 nr nt) nu)), (at (path0 ti2 root) (cons2 ti2 (cons2 pa2 pr pu) pt)), (conat root ti2), (stage main)}
+Applying transition (elim_cons root mc2 (bi mc2 (bi md2 (pa r) (pa u)) (pa t)) (bi mc2 (bi md2 (na r) (na t)) (na u)))
+---- {(at (path1 mc2 root) (bi mc2 (bi md2 (na r) (na t)) (na u))), (at (path0 mc2 root) (bi mc2 (bi md2 (pa r) (pa u)) (pa t))), (stage main)}
 
-Applying transition (switch (path0 ti2 root) pr pu pt)
----- {(at (path0 ti2 root) (cons2 pa2 (cons2 ti2 pr pt) pu)), (at (path1 ti2 root) (cons2 ti2 (cons2 pa2 nr nt) nu)), (conat root ti2), (stage main)}
+Applying transition (switch (path0 mc2 root) (pa r) (pa u) (pa t))
+---- {(at (path0 mc2 root) (bi md2 (bi mc2 (pa r) (pa t)) (pa u))), (at (path1 mc2 root) (bi mc2 (bi md2 (na r) (na t)) (na u))), (stage main)}
 
-Applying transition (intr_cons root ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) (cons2 ti2 (cons2 pa2 nr nt) nu))
----- {(at root (cons2 ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) (cons2 ti2 (cons2 pa2 nr nt) nu))), (stage main)}
+Applying transition (commute_md (path0 mc2 root) (bi mc2 (pa r) (pa t)) (pa u))
+---- {(at (path0 mc2 root) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))), (at (path1 mc2 root) (bi mc2 (bi md2 (na r) (na t)) (na u))), (stage main)}
 
-Applying transition (commute_ti root (cons2 pa2 (cons2 ti2 pr pt) pu) (cons2 ti2 (cons2 pa2 nr nt) nu))
----- {(at root (cons2 ti2 (cons2 ti2 (cons2 pa2 nr nt) nu) (cons2 pa2 (cons2 ti2 pr pt) pu))), (stage main)}
+Applying transition (elim_cons (path1 mc2 root) mc2 (bi md2 (na r) (na t)) (na u))
+---- {(at (path1 mc2 (path1 mc2 root)) (na u)), (at (path0 mc2 (path1 mc2 root)) (bi md2 (na r) (na t))), (at (path0 mc2 root) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))), (stage main)}
 
-Applying transition (assocr_ti root (cons2 pa2 nr nt) nu (cons2 pa2 (cons2 ti2 pr pt) pu))
----- {(at root (cons2 ti2 (cons2 pa2 nr nt) (cons2 ti2 nu (cons2 pa2 (cons2 ti2 pr pt) pu)))), (stage main)}
+Applying transition (commute_md (path0 mc2 (path1 mc2 root)) (na r) (na t))
+---- {(at (path0 mc2 (path1 mc2 root)) (bi md2 (na t) (na r))), (at (path1 mc2 (path1 mc2 root)) (na u)), (at (path0 mc2 root) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))), (stage main)}
 
-Applying transition (elim_cons root ti2 (cons2 pa2 nr nt) (cons2 ti2 nu (cons2 pa2 (cons2 ti2 pr pt) pu)))
----- {(at (path1 ti2 root) (cons2 ti2 nu (cons2 pa2 (cons2 ti2 pr pt) pu))), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (intr_cons mc2 (path1 mc2 root) (bi md2 (na t) (na r)) (na u))
+---- {(at (path1 mc2 root) (bi mc2 (bi md2 (na t) (na r)) (na u))), (at (path0 mc2 root) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))), (stage main)}
 
-Applying transition (commute_ti (path1 ti2 root) nu (cons2 pa2 (cons2 ti2 pr pt) pu))
----- {(at (path1 ti2 root) (cons2 ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) nu)), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (intr_cons mc2 root (bi md2 (pa u) (bi mc2 (pa r) (pa t))) (bi mc2 (bi md2 (na t) (na r)) (na u)))
+---- {(at root (bi mc2 (bi md2 (pa u) (bi mc2 (pa r) (pa t))) (bi mc2 (bi md2 (na t) (na r)) (na u)))), (stage main)}
 
-Applying transition (elim_cons (path1 ti2 root) ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) nu)
----- {(at (path1 ti2 (path1 ti2 root)) nu), (at (path0 ti2 (path1 ti2 root)) (cons2 pa2 (cons2 ti2 pr pt) pu)), (conat (path1 ti2 root) ti2), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (commute_mc root (bi md2 (pa u) (bi mc2 (pa r) (pa t))) (bi mc2 (bi md2 (na t) (na r)) (na u)))
+---- {(at root (bi mc2 (bi mc2 (bi md2 (na t) (na r)) (na u)) (bi md2 (pa u) (bi mc2 (pa r) (pa t))))), (stage main)}
 
-Applying transition (commute_pa (path0 ti2 (path1 ti2 root)) (cons2 ti2 pr pt) pu)
----- {(at (path0 ti2 (path1 ti2 root)) (cons2 pa2 pu (cons2 ti2 pr pt))), (at (path1 ti2 (path1 ti2 root)) nu), (conat (path1 ti2 root) ti2), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (assocr_mc root (bi md2 (na t) (na r)) (na u) (bi md2 (pa u) (bi mc2 (pa r) (pa t))))
+---- {(at root (bi mc2 (bi md2 (na t) (na r)) (bi mc2 (na u) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))))), (stage main)}
 
-Applying transition (intr_cons (path1 ti2 root) ti2 (cons2 pa2 pu (cons2 ti2 pr pt)) nu)
----- {(at (path1 ti2 root) (cons2 ti2 (cons2 pa2 pu (cons2 ti2 pr pt)) nu)), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (elim_cons root mc2 (bi md2 (na t) (na r)) (bi mc2 (na u) (bi md2 (pa u) (bi mc2 (pa r) (pa t)))))
+---- {(at (path1 mc2 root) (bi mc2 (na u) (bi md2 (pa u) (bi mc2 (pa r) (pa t))))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (switch (path1 ti2 root) pu (cons2 ti2 pr pt) nu)
----- {(at (path1 ti2 root) (cons2 pa2 (cons2 ti2 pu nu) (cons2 ti2 pr pt))), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (commute_mc (path1 mc2 root) (na u) (bi md2 (pa u) (bi mc2 (pa r) (pa t))))
+---- {(at (path1 mc2 root) (bi mc2 (bi md2 (pa u) (bi mc2 (pa r) (pa t))) (na u))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (elim_cons (path1 ti2 root) pa2 (cons2 ti2 pu nu) (cons2 ti2 pr pt))
----- {(at (path1 pa2 (path1 ti2 root)) (cons2 ti2 pr pt)), (at (path0 pa2 (path1 ti2 root)) (cons2 ti2 pu nu)), (conat (path1 ti2 root) pa2), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (switch (path1 mc2 root) (pa u) (bi mc2 (pa r) (pa t)) (na u))
+---- {(at (path1 mc2 root) (bi md2 (bi mc2 (pa u) (na u)) (bi mc2 (pa r) (pa t)))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (commute_ti (path0 pa2 (path1 ti2 root)) pu nu)
----- {(at (path0 pa2 (path1 ti2 root)) (cons2 ti2 nu pu)), (at (path1 pa2 (path1 ti2 root)) (cons2 ti2 pr pt)), (conat (path1 ti2 root) pa2), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (elim_cons (path1 mc2 root) md2 (bi mc2 (pa u) (na u)) (bi mc2 (pa r) (pa t)))
+---- {(at (path1 md2 (path1 mc2 root)) (bi mc2 (pa r) (pa t))), (at (path0 md2 (path1 mc2 root)) (bi mc2 (pa u) (na u))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (up_u (path0 pa2 (path1 ti2 root)))
----- {(at (path0 pa2 (path1 ti2 root)) (cons0 pa0)), (at (path1 pa2 (path1 ti2 root)) (cons2 ti2 pr pt)), (conat (path1 ti2 root) pa2), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (cut (path0 md2 (path1 mc2 root)) u)
+---- {(at (path0 md2 (path1 mc2 root)) (pa md0)), (at (path1 md2 (path1 mc2 root)) (bi mc2 (pa r) (pa t))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (intr_cons (path1 ti2 root) pa2 (cons0 pa0) (cons2 ti2 pr pt))
----- {(at (path1 ti2 root) (cons2 pa2 (cons0 pa0) (cons2 ti2 pr pt))), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (intr_cons md2 (path1 mc2 root) (pa md0) (bi mc2 (pa r) (pa t)))
+---- {(at (path1 mc2 root) (bi md2 (pa md0) (bi mc2 (pa r) (pa t)))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (elim_unit_pa (path1 ti2 root) (cons2 ti2 pr pt))
----- {(at (path1 ti2 root) (cons2 ti2 pr pt)), (at (path0 ti2 root) (cons2 pa2 nr nt)), (conat root ti2), (stage main)}
+Applying transition (elim_unit_md (path1 mc2 root) (bi mc2 (pa r) (pa t)))
+---- {(at (path1 mc2 root) (bi mc2 (pa r) (pa t))), (at (path0 mc2 root) (bi md2 (na t) (na r))), (stage main)}
 
-Applying transition (intr_cons root ti2 (cons2 pa2 nr nt) (cons2 ti2 pr pt))
----- {(at root (cons2 ti2 (cons2 pa2 nr nt) (cons2 ti2 pr pt))), (stage main)}
+Applying transition (intr_cons mc2 root (bi md2 (na t) (na r)) (bi mc2 (pa r) (pa t)))
+---- {(at root (bi mc2 (bi md2 (na t) (na r)) (bi mc2 (pa r) (pa t)))), (stage main)}
 
-Applying transition (commute_ti root (cons2 pa2 nr nt) (cons2 ti2 pr pt))
----- {(at root (cons2 ti2 (cons2 ti2 pr pt) (cons2 pa2 nr nt))), (stage main)}
+Applying transition (commute_mc root (bi md2 (na t) (na r)) (bi mc2 (pa r) (pa t)))
+---- {(at root (bi mc2 (bi mc2 (pa r) (pa t)) (bi md2 (na t) (na r)))), (stage main)}
 
-Applying transition (assocr_ti root pr pt (cons2 pa2 nr nt))
----- {(at root (cons2 ti2 pr (cons2 ti2 pt (cons2 pa2 nr nt)))), (stage main)}
+Applying transition (assocr_mc root (pa r) (pa t) (bi md2 (na t) (na r)))
+---- {(at root (bi mc2 (pa r) (bi mc2 (pa t) (bi md2 (na t) (na r))))), (stage main)}
 
-Applying transition (elim_cons root ti2 pr (cons2 ti2 pt (cons2 pa2 nr nt)))
----- {(at (path1 ti2 root) (cons2 ti2 pt (cons2 pa2 nr nt))), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (elim_cons root mc2 (pa r) (bi mc2 (pa t) (bi md2 (na t) (na r))))
+---- {(at (path1 mc2 root) (bi mc2 (pa t) (bi md2 (na t) (na r)))), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (commute_ti (path1 ti2 root) pt (cons2 pa2 nr nt))
----- {(at (path1 ti2 root) (cons2 ti2 (cons2 pa2 nr nt) pt)), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (commute_mc (path1 mc2 root) (pa t) (bi md2 (na t) (na r)))
+---- {(at (path1 mc2 root) (bi mc2 (bi md2 (na t) (na r)) (pa t))), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (elim_cons (path1 ti2 root) ti2 (cons2 pa2 nr nt) pt)
----- {(at (path1 ti2 (path1 ti2 root)) pt), (at (path0 ti2 (path1 ti2 root)) (cons2 pa2 nr nt)), (conat (path1 ti2 root) ti2), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (switch (path1 mc2 root) (na t) (na r) (pa t))
+---- {(at (path1 mc2 root) (bi md2 (bi mc2 (na t) (pa t)) (na r))), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (commute_pa (path0 ti2 (path1 ti2 root)) nr nt)
----- {(at (path0 ti2 (path1 ti2 root)) (cons2 pa2 nt nr)), (at (path1 ti2 (path1 ti2 root)) pt), (conat (path1 ti2 root) ti2), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (elim_cons (path1 mc2 root) md2 (bi mc2 (na t) (pa t)) (na r))
+---- {(at (path1 md2 (path1 mc2 root)) (na r)), (at (path0 md2 (path1 mc2 root)) (bi mc2 (na t) (pa t))), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (intr_cons (path1 ti2 root) ti2 (cons2 pa2 nt nr) pt)
----- {(at (path1 ti2 root) (cons2 ti2 (cons2 pa2 nt nr) pt)), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (commute_mc (path0 md2 (path1 mc2 root)) (na t) (pa t))
+---- {(at (path0 md2 (path1 mc2 root)) (bi mc2 (pa t) (na t))), (at (path1 md2 (path1 mc2 root)) (na r)), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (switch (path1 ti2 root) nt nr pt)
----- {(at (path1 ti2 root) (cons2 pa2 (cons2 ti2 nt pt) nr)), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (cut (path0 md2 (path1 mc2 root)) t)
+---- {(at (path0 md2 (path1 mc2 root)) (pa md0)), (at (path1 md2 (path1 mc2 root)) (na r)), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (elim_cons (path1 ti2 root) pa2 (cons2 ti2 nt pt) nr)
----- {(at (path1 pa2 (path1 ti2 root)) nr), (at (path0 pa2 (path1 ti2 root)) (cons2 ti2 nt pt)), (conat (path1 ti2 root) pa2), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (intr_cons md2 (path1 mc2 root) (pa md0) (na r))
+---- {(at (path1 mc2 root) (bi md2 (pa md0) (na r))), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (up_t (path0 pa2 (path1 ti2 root)))
----- {(at (path0 pa2 (path1 ti2 root)) (cons0 pa0)), (at (path1 pa2 (path1 ti2 root)) nr), (conat (path1 ti2 root) pa2), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (elim_unit_md (path1 mc2 root) (na r))
+---- {(at (path1 mc2 root) (na r)), (at (path0 mc2 root) (pa r)), (stage main)}
 
-Applying transition (intr_cons (path1 ti2 root) pa2 (cons0 pa0) nr)
----- {(at (path1 ti2 root) (cons2 pa2 (cons0 pa0) nr)), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
+Applying transition (intr_cons mc2 root (pa r) (na r))
+---- {(at root (bi mc2 (pa r) (na r))), (stage main)}
 
-Applying transition (elim_unit_pa (path1 ti2 root) nr)
----- {(at (path1 ti2 root) nr), (at (path0 ti2 root) pr), (conat root ti2), (stage main)}
-
-Applying transition (intr_cons root ti2 pr nr)
----- {(at root (cons2 ti2 pr nr)), (stage main)}
-
-Applying transition (commute_ti root pr nr)
----- {(at root (cons2 ti2 nr pr)), (stage main)}
-
-Applying transition (up_r root)
----- {(at root (cons0 pa0)), (stage main)}
+Applying transition (cut root r)
+---- {(at root (pa md0)), (stage main)}
 
 Applying transition win
 ---- {(stage main)}
