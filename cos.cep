@@ -1,0 +1,182 @@
+
+% Binary constructors
+binaryConstructor : type.
+ti2 : binaryConstructor.  % binary times
+pa2 : binaryConstructor.  % binary par
+pl2 : binaryConstructor.  % binary plus
+wi2 : binaryConstructor.  % binary with
+
+% Nullary constructors
+nullaryConstructor : type.
+ti0 : nullaryConstructor.  % nullary times (one)
+pa0 : nullaryConstructor.  % nullary par (bottom)
+pl0 : nullaryConstructor.  % nullary plus (zero)
+wi0 : nullaryConstructor.  % nullary with (top)
+
+% Paths
+path : type.
+path0 binaryConstructor path : path.
+path1 binaryConstructor path : path.
+
+% Structures
+structure : type.
+cons2 binaryConstructor structure structure : structure.
+cons0 nullaryConstructor : structure.
+
+conat path binaryConstructor : pred.
+at path structure : pred.
+
+% Winnability
+root : path.
+
+% Extra atoms
+pr : structure.
+nr : structure.
+pu : structure.
+nu : structure.
+pt : structure.
+nt : structure.
+
+
+stage main = {
+
+
+% Structural representation
+elim_cons
+  : at P (cons2 C S0 S1) -o
+    conat P C * at (path0 C P) S0 * at (path1 C P) S1.
+intr_cons
+  : conat P C * at (path0 C P) S0 * at (path1 C P) S1 -o
+    at P (cons2 C S0 S1).
+
+% Equivalences
+elim_unit_ti : at P (cons2 ti2 (cons0 ti0) A) -o at P A.
+intr_unit_ti : at P A -o at P (cons2 ti2 (cons0 ti0) A).
+elim_unit_pa : at P (cons2 pa2 (cons0 pa0) A) -o at P A.
+intr_unit_pa : at P A -o at P (cons2 pa2 (cons0 pa0) A).
+elim_unit_pl : at P (cons2 pl2 (cons0 pl0) A) -o at P A.
+intr_unit_pl : at P A -o at P (cons2 pl2 (cons0 pl0) A).
+elim_unit_wi : at P (cons2 wi2 (cons0 wi0) A) -o at P A.
+intr_unit_wi : at P A -o at P (cons2 wi2 (cons0 wi0) A).
+commute_ti : at P (cons2 ti2 A B) -o at P (cons2 ti2 B A).
+commute_pa : at P (cons2 pa2 A B) -o at P (cons2 pa2 B A).
+commute_pl : at P (cons2 pl2 A B) -o at P (cons2 pl2 B A).
+commute_wi : at P (cons2 wi2 A B) -o at P (cons2 wi2 B A).
+assocr_ti
+  : at P (cons2 ti2 (cons2 ti2 A B) C) -o
+    at P (cons2 ti2 A (cons2 ti2 B C)).
+assocr_pa
+  : at P (cons2 pa2 (cons2 pa2 A B) C) -o
+    at P (cons2 pa2 A (cons2 pa2 B C)).
+assocr_pl
+  : at P (cons2 pl2 (cons2 pl2 A B) C) -o
+    at P (cons2 pl2 A (cons2 pl2 B C)).
+assocr_wi
+  : at P (cons2 wi2 (cons2 wi2 A B) C) -o
+    at P (cons2 wi2 A (cons2 wi2 B C)).
+
+
+% Rules (based on system SALS from "A Local System for Linear Logic")
+
+% TODO: Figure out how to represent these atoms. For now, we just
+% duplicate the rules for each atom type. See the "Extra atoms"
+% section below.
+%% ()
+%% [a -a]
+%at P (cons0 ti0) -o at P (cons2 pa2 A -A)
+%% (a -a)
+%% []
+%at P (cons2 ti2 A -A) -o at P (cons0 pa0)
+dn_mul
+  : at P (cons0 ti0) -o at P (cons2 pa2 (cons0 ti0) (cons0 pa0)).
+up_mul
+  : at P (cons2 ti2 (cons0 pa0) (cons0 ti0)) -o at P (cons0 pa0).
+dn_add
+  : at P (cons0 ti0) -o at P (cons2 pa2 (cons0 pl0) (cons0 wi0)).
+up_add
+  : at P (cons2 ti2 (cons0 wi0) (cons0 pl0)) -o at P (cons0 pa0).
+
+% ([R U] T)
+% [(R T) U]
+switch
+  : at P (cons2 ti2 (cons2 pa2 R U) T) -o
+    at P (cons2 pa2 (cons2 ti2 R T) U).
+
+% +([R U] [T V])
+% [+(R T) +[U V]]
+dn_medial
+  : at P (cons2 wi2 (cons2 pa2 R U) (cons2 pa2 T V)) -o
+    at P (cons2 pa2 (cons2 pa2 R T) (cons2 pl2 U V)).
+% (+[R U] +(T V))
+% +[(R T) (U V)]
+up_medial
+  : at P (cons2 ti2 (cons2 pl2 R U) (cons2 wi2 T V)) -o
+    at P (cons2 pl2 (cons2 ti2 R T) (cons2 ti2 U V)).
+
+% +[]
+% R
+% TODO: Ceptre doesn't allow this one because R is bound in the
+% conclusion and not the premise. Okay, use the local system instead
+% of SALS.
+%dn_merge0 : at P (cons0 pl0) -o at P R.
+% R
+% +()
+up_merge0 : at P R -o at P (cons0 wi0).
+
+% +[R R]
+% R
+dn_merge2 : at P (cons2 pl2 R R) -o at P R.
+% R
+% +(R R)
+up_merge2 : at P R -o at P (cons2 wi2 R R).
+
+
+% Winnability
+win : at root (cons0 pa0) -o ().
+
+% Extra atoms
+dn_r : at P (cons0 ti0) -o at P (cons2 pa2 pr nr).
+up_r : at P (cons2 ti2 nr pr) -o at P (cons0 pa0).
+dn_u : at P (cons0 ti0) -o at P (cons2 pa2 pu nu).
+up_u : at P (cons2 ti2 nu pu) -o at P (cons0 pa0).
+dn_t : at P (cons0 ti0) -o at P (cons2 pa2 pt nt).
+up_t : at P (cons2 ti2 nt pt) -o at P (cons0 pa0).
+
+}
+#interactive main.
+
+
+% Demo
+%
+% In this demo, the player is posed with an expression of the switch
+% rule as a structure that can be proven by reducing it to []. This
+% doesn't "prove" anything since we have access to the switch rule
+% itself during the proof, but it lets the player get a feel for
+% proving simple theorems in this system.
+%
+% Strategy guide:
+% (([R U] T) ([-R -T] -U))
+% ([(R T) U] ([-R -T] -U))  % switch
+% (([(R T) U] -U) [-R -T])
+% ([(R T) (U -U)] [-R -T])  % switch
+% ([(R T) []] [-R -T])
+% ((R T) [-R -T])
+% (T (R [-R -T]))
+% (T [(R -R) -T])  % switch
+% (T [[] -T])
+% (T -T)
+% []
+%
+context ctx_try_to_prove_switch_as_a_theorem = {
+  at root
+    (cons2 ti2
+      % Positive form of ([R U] T)
+      (cons2 ti2 (cons2 pa2 pr pu) pt)
+      
+      % Negative form of [(R T) U]
+      (cons2 ti2 (cons2 pa2 nr nt) nu))
+}
+
+
+#trace _ main ctx_try_to_prove_switch_as_a_theorem.
+

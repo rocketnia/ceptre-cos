@@ -1,0 +1,35 @@
+Trace: 
+let [x4, x3, x2] = elim_cons root ti2 (cons2 ti2 (cons2 pa2 pr pu) pt) (cons2 ti2 (cons2 pa2 nr nt) nu) [x1, []];
+let [x5] = switch (path0 ti2 root) pr pu pt [x3, []];
+let [x6] = intr_cons root ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) (cons2 ti2 (cons2 pa2 nr nt) nu) [x2, [x5, [x4, []]]];
+let [x7] = commute_ti root (cons2 pa2 (cons2 ti2 pr pt) pu) (cons2 ti2 (cons2 pa2 nr nt) nu) [x6, []];
+let [x8] = assocr_ti root (cons2 pa2 nr nt) nu (cons2 pa2 (cons2 ti2 pr pt) pu) [x7, []];
+let [x11, x10, x9] = elim_cons root ti2 (cons2 pa2 nr nt) (cons2 ti2 nu (cons2 pa2 (cons2 ti2 pr pt) pu)) [x8, []];
+let [x12] = commute_ti (path1 ti2 root) nu (cons2 pa2 (cons2 ti2 pr pt) pu) [x11, []];
+let [x15, x14, x13] = elim_cons (path1 ti2 root) ti2 (cons2 pa2 (cons2 ti2 pr pt) pu) nu [x12, []];
+let [x16] = commute_pa (path0 ti2 (path1 ti2 root)) (cons2 ti2 pr pt) pu [x14, []];
+let [x17] = intr_cons (path1 ti2 root) ti2 (cons2 pa2 pu (cons2 ti2 pr pt)) nu [x13, [x16, [x15, []]]];
+let [x18] = switch (path1 ti2 root) pu (cons2 ti2 pr pt) nu [x17, []];
+let [x21, x20, x19] = elim_cons (path1 ti2 root) pa2 (cons2 ti2 pu nu) (cons2 ti2 pr pt) [x18, []];
+let [x22] = commute_ti (path0 pa2 (path1 ti2 root)) pu nu [x20, []];
+let [x23] = up_u (path0 pa2 (path1 ti2 root)) [x22, []];
+let [x24] = intr_cons (path1 ti2 root) pa2 (cons0 pa0) (cons2 ti2 pr pt) [x19, [x23, [x21, []]]];
+let [x25] = elim_unit_pa (path1 ti2 root) (cons2 ti2 pr pt) [x24, []];
+let [x26] = intr_cons root ti2 (cons2 pa2 nr nt) (cons2 ti2 pr pt) [x9, [x10, [x25, []]]];
+let [x27] = commute_ti root (cons2 pa2 nr nt) (cons2 ti2 pr pt) [x26, []];
+let [x28] = assocr_ti root pr pt (cons2 pa2 nr nt) [x27, []];
+let [x31, x30, x29] = elim_cons root ti2 pr (cons2 ti2 pt (cons2 pa2 nr nt)) [x28, []];
+let [x32] = commute_ti (path1 ti2 root) pt (cons2 pa2 nr nt) [x31, []];
+let [x35, x34, x33] = elim_cons (path1 ti2 root) ti2 (cons2 pa2 nr nt) pt [x32, []];
+let [x36] = commute_pa (path0 ti2 (path1 ti2 root)) nr nt [x34, []];
+let [x37] = intr_cons (path1 ti2 root) ti2 (cons2 pa2 nt nr) pt [x33, [x36, [x35, []]]];
+let [x38] = switch (path1 ti2 root) nt nr pt [x37, []];
+let [x41, x40, x39] = elim_cons (path1 ti2 root) pa2 (cons2 ti2 nt pt) nr [x38, []];
+let [x42] = up_t (path0 pa2 (path1 ti2 root)) [x40, []];
+let [x43] = intr_cons (path1 ti2 root) pa2 (cons0 pa0) nr [x39, [x42, [x41, []]]];
+let [x44] = elim_unit_pa (path1 ti2 root) nr [x43, []];
+let [x45] = intr_cons root ti2 pr nr [x29, [x30, [x44, []]]];
+let [x46] = commute_ti root pr nr [x45, []];
+let [x47] = up_r root [x46, []];
+let [] = win  [x47, []];
+
